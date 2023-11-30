@@ -3,12 +3,31 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Button("Authorize with Spotify") {
-                // Call the function to initiate the authorization request
-                initiateSpotifyAuthorization()
-            }
+            Color.black
+                .ignoresSafeArea()
+                .overlay(
+                    VStack {
+                        Button("Authorize with Spotify") {
+                            initiateSpotifyAuthorization()
+                        }
+                        .foregroundColor(.green)
+                        .font(.system(size: 20))
+                        .offset(y:350)
+                        
+                        Text("Spotify Top 5")
+                            .foregroundColor(.green)
+                            .font(.system(size: 50))
+                            .offset(y:-280)
+                        
+                        Image("spotify")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .offset(y:-290)
+                    }
+                )
         }
     }
+}
     private func initiateSpotifyAuthorization() {
             let authorizationEndpoint = "https://accounts.spotify.com/authorize"
             
@@ -35,7 +54,7 @@ struct ContentView: View {
                 UIApplication.shared.open(authorizationURL)
             }
         }
-    }
+    
 
     
     
